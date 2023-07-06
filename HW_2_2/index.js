@@ -1,4 +1,7 @@
 var number = prompt("Enter a five-digit number:");
-var numberString = number.toString();
-var digits = numberString.split("");
-console.log(digits.join(" "));
+if (!isNaN(number) && number.length === 5) {
+  var digits = number.split("");
+  console.log(digits.join(" "));
+} else {
+  console.log("Invalid number entered. Please enter a five-digit number.");
+}
