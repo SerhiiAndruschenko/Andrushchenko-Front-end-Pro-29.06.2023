@@ -1,4 +1,4 @@
-var hours = prompt('Enter the number of hours:');
+var hours = +prompt('Enter the number of hours:');
 if (isNaN(hours)) {
   alert('Invalid input. Please enter numbers only.');
 } else{
