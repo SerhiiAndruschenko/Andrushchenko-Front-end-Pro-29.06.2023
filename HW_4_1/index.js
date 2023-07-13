@@ -36,7 +36,7 @@ if(operation === 'add' || operation === 'sub' || operation === 'mult' || operati
     }
 
   } else {
-    alert("Invalid input. Please enter numbers only.");
+    alert("Error: Please enter numbers only.");
   }
   
 } else {
