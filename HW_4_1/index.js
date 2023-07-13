@@ -1,6 +1,5 @@
 const operation = prompt("What do you want to do? (add, sub, mult, div)");
 
-
 if(operation != 'add' && operation != 'sub' && operation != 'mult' && operation != 'div'){
   alert("Error: Unknown operation!");
 } else{
