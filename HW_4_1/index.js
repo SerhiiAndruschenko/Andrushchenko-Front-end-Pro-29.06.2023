@@ -7,8 +7,6 @@ if(operation != 'add' && operation != 'sub' && operation != 'mult' && operation 
   let num1 = parseFloat(prompt("Enter the first number: "));
   let num2 = parseFloat(prompt("Enter the second number: "));
 
-  
-
   let result;
   let operationSymbol;
 
@@ -28,7 +26,7 @@ if(operation != 'add' && operation != 'sub' && operation != 'mult' && operation 
     } else {
       alert("Error: Division by zero!");
     }
-  } else{
+  } else {
     alert("Invalid input. Please enter numbers only.");
   }
 
