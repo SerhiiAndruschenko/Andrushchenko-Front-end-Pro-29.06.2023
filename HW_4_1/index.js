@@ -1,10 +1,10 @@
 const operation = prompt("What do you want to do? (add, sub, mult, div)");
 
 if(operation !== 'add' && operation !== 'sub' && operation !== 'mult' && operation !== 'div'){
-  alert("Error: Unknown operation!");
+  alert("Error: Wrong operation!");
 } else {
-  const num1 = parseFloat(prompt("Enter the first number: "));
-  const num2 = parseFloat(prompt("Enter the second number: "));
+  const num1 = +prompt("Enter the first number: ");
+  const num2 = +prompt("Enter the second number: ");
 
   let result;
   let operationSymbol;
@@ -28,7 +28,7 @@ if(operation !== 'add' && operation !== 'sub' && operation !== 'mult' && operati
           result = num1 / num2;
           operationSymbol = '/';
         } else {
-          alert("Error: Division by zero!");
+          alert("Error: cannot divide by 0!");
         }
         break;
     }
