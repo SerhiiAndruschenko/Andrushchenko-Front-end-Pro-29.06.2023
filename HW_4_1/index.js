@@ -1,8 +1,6 @@
 const operation = prompt("What do you want to do? (add, sub, mult, div)");
 
-if(operation !== 'add' && operation !== 'sub' && operation !== 'mult' && operation !== 'div'){
-  alert("Error: Wrong operation!");
-} else {
+if(operation === 'add' || operation === 'sub' || operation === 'mult' || operation === 'div'){
   const num1 = +prompt("Enter the first number: ");
   const num2 = +prompt("Enter the second number: ");
 
@@ -40,6 +38,8 @@ if(operation !== 'add' && operation !== 'sub' && operation !== 'mult' && operati
   } else {
     alert("Invalid input. Please enter numbers only.");
   }
-
+  
+} else {
+  alert("Error: Wrong operation!");
 }
 
