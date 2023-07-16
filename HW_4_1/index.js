@@ -5,24 +5,27 @@ let result;
 let operationSymbol;
 
 switch(true){
-  case operation == 'add' && !isNaN(num1) && !isNaN(num2):
+  case isNaN(num1) || isNaN(num2):
+    alert("Error: Wrong number!");
+    break;
+  case operation == 'add':
     result = num1 + num2;
     operationSymbol = '+';
     break;
-  case operation == 'sub' && !isNaN(num1) && !isNaN(num2):
+  case operation == 'sub':
     result = num1 - num2;
     operationSymbol = '-';
     break;
-  case operation == 'mult' && !isNaN(num1) && !isNaN(num2):
+  case operation == 'mult':
     result = num1 * num2;
     operationSymbol = '*';
     break;
-  case operation == 'div' && !isNaN(num1) && !isNaN(num2):
+  case operation == 'div':
     if (num2 !== 0) {
       result = num1 / num2;
       operationSymbol = '/';
     } else {
-      alert("Error: cannot divide by 0!");
+      alert("Error: Cannot divide by 0!");
     }
     break;
   default:
