@@ -21,12 +21,8 @@ switch(true){
     operationSymbol = '*';
     break;
   case operation == 'div':
-    if (num2 !== 0) {
-      result = num1 / num2;
-      operationSymbol = '/';
-    } else {
-      alert("Error: Cannot divide by 0!");
-    }
+    operationSymbol = '/';
+    result = num2 !== 0 ? num1 / num2 : alert("Error: Cannot divide by 0!");;
     break;
   default:
     alert("Error: Wrong operation!");
