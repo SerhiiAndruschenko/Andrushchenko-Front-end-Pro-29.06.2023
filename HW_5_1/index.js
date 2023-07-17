@@ -2,11 +2,12 @@
 var length = parseInt(prompt("Enter array length:"));
 
 // array creation
-var array = [];
-Array.from({ length }).forEach((element, index) => {
+var array = new Array(length).fill().map((element, index) => {
   element = prompt("Enter the element of the array with the index " + index + ":");
-  array.push(element);
+  return element;
 });
+//console.log(array);
+
 
 // contents of the array before sorting
 alert("Array before sorting: " + array);
