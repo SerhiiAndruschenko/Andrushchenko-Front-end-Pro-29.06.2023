@@ -8,12 +8,17 @@ var array = new Array(length).fill().map((element, index) => {
 });
 //console.log(array);
 
+var containsOnlyNumbers = array.every(element => !isNaN(+element));
 
 // contents of the array before sorting
 alert("Array before sorting: " + array);
 
 // sorting
-array.sort((a, b) => a - b);
+if (containsOnlyNumbers) {
+  array.sort((a, b) => a - b);
+} else {
+  array.sort();
+}
 
 // contents of the array after sorting
 alert("Array after sorting: " + array);
