@@ -23,35 +23,3 @@ for (let i = 1; i <= 100; i++) {
 
 
 /*5. Дане деяке число. Визначити, чи можна одержати це число шляхом зведення числа 3 у деякий ступінь. (Наприклад, числа 9, 81 можна отримати, а 13 - не можна).*/
-
-function customSplit(str, sepr) {
-  let arr = [];
-  let older = 0;
-  str += sepr;
-  for (let i = 0; i <str.length; i++){
-    if(str[i] == sepr) {
-      let res = '';
-      for (let j = older; j < i; j++) {
-       res += str[j];
-      }
-      older = ++i;
-      arr.push(res)
-    }
-  }
-  return arr;
-}
-
-function customSplit(str, sepr) {
-  let arr = [];
-  let older = 0;
-  str += sepr;
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] === sepr) {
-      arr.push(str.slice(older, i));
-      older = ++i;
-    }
-  }
-  return arr;
-}
-
-console.log(customSplit('stststr', 't'));
