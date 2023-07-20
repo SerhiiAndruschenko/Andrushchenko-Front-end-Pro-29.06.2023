@@ -1,5 +1,6 @@
 /*1. Вивести числа від 20 до 30 через пропуск, використовуючи крок 0,5 (20 20,5 21 21,5….).*/
 let arr = [];
+
 for (let i = 20; i <= 30; i += 0.5){
   arr.push(i);
 }
@@ -12,6 +13,7 @@ for(let i = 10; i <= 100; i += 10){
 
 /*3. Дане ціле число. Вивести всі цілі числа від 1 до 100, квадрат яких не перевищує числа N. */
 let N = 200;
+
 for (let i = 1; i <= 100; i++) {
   if (i * i <= N) {
     console.log(i);
@@ -21,6 +23,7 @@ for (let i = 1; i <= 100; i++) {
 /*4. Дане ціле число. З'ясувати, чи є воно простим (простим називається число, більше 1, які не мають інших дільників крім 1 і себе).*/
 let isSimple = true;
 let numberToCheck = 13;
+
 if(numberToCheck <= 1){
   isSimple = false;
 } else {
@@ -30,7 +33,9 @@ if(numberToCheck <= 1){
     }
   }
 }
-let result = isSimple ? `${numberToCheck} є простим числом` : `${numberToCheck} не є простим числом`
+
+let result = isSimple ? `${numberToCheck} є простим числом` : `${numberToCheck} не є простим числом`;
+
 console.log(result);
 
 /*5. Дане деяке число. Визначити, чи можна одержати це число шляхом зведення числа 3 у деякий ступінь. (Наприклад, числа 9, 81 можна отримати, а 13 - не можна).*/
@@ -38,6 +43,7 @@ let number = 27;
 let found = false;
 let resultValue = 1;
 let power = 0;
+
 for (; resultValue < number; power++) {
   resultValue *= 3;
   if (resultValue === number) {
@@ -45,5 +51,7 @@ for (; resultValue < number; power++) {
     break;
   }
 }
+
 let resulltMessage = found ? `${number} можна отримати шляхом зведення числа 3 у ступінь ${power}.` : `${number} не можна отримати шляхом зведення числа 3 у деякий ступінь.`;
+
 console.log(resulltMessage);
