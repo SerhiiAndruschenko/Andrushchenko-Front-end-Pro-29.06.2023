@@ -34,13 +34,12 @@ let result = isSimple ? `${numberToCheck} є простим числом` : `${n
 console.log(result);
 
 /*5. Дане деяке число. Визначити, чи можна одержати це число шляхом зведення числа 3 у деякий ступінь. (Наприклад, числа 9, 81 можна отримати, а 13 - не можна).*/
-let number = 81;
+let number = 27;
 let found = false;
 let resultValue = 1;
 let power = 0;
-for (let i = 1; i < number; i++) {
+for (; resultValue < number; power++) {
   resultValue *= 3;
-  power += i;
   if (resultValue === number) {
     found = true;
     break;
