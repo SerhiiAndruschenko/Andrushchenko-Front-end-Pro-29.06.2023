@@ -20,6 +20,18 @@ for (let i = 1; i <= 100; i++) {
 }
 
 /*4. Дане ціле число. З'ясувати, чи є воно простим (простим називається число, більше 1, які не мають інших дільників крім 1 і себе).*/
-
+let isSimple = true;
+let numberToCheck = +prompt('');
+if(numberToCheck <= 1){
+  isSimple = false;
+} else {
+  for (let i = 2; i < numberToCheck; i++) {
+    if(numberToCheck % i === 0){
+      isSimple = false;
+    }
+  }
+}
+let result = isSimple ? `${numberToCheck} є простим числом` : `${numberToCheck} не є простим числом`
+alert(result);
 
 /*5. Дане деяке число. Визначити, чи можна одержати це число шляхом зведення числа 3 у деякий ступінь. (Наприклад, числа 9, 81 можна отримати, а 13 - не можна).*/
