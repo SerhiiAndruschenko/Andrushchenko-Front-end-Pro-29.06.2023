@@ -42,7 +42,7 @@ console.log(result);
 let number = 27;
 let found = false;
 let resultValue = 1;
-let power = 0;
+let power = 1;
 
 for (; resultValue < number; power++) {
   resultValue *= 3;
