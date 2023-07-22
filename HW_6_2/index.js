@@ -42,10 +42,11 @@ console.log(result);
 let number = 27;
 let found = false;
 let resultValue = 1;
-let power = 1;
+let power = 0;
 
-for (; resultValue < number; power++) {
+for (; resultValue < number; ) {
   resultValue *= 3;
+  power++;
   if (resultValue === number) {
     found = true;
     break;
@@ -55,3 +56,18 @@ for (; resultValue < number; power++) {
 let resulltMessage = found ? `${number} можна отримати шляхом зведення числа 3 у ступінь ${power}.` : `${number} не можна отримати шляхом зведення числа 3 у деякий ступінь.`;
 
 console.log(resulltMessage);
+
+/*5. Версія 2*/
+let currentNumber = 27;
+let power_2 = 0;
+
+for (;; power_2++) {
+  let powerOfThree = 3**power_2;
+  if (powerOfThree === currentNumber) {
+    console.log(`${currentNumber} можна отримати шляхом зведення числа 3 у ступінь ${power_2}.`);
+    break;
+  } else if(powerOfThree > currentNumber){
+    console.log(`${currentNumber} не можна отримати шляхом зведення числа 3 у деякий ступінь.`);
+    break;
+  }
+}
