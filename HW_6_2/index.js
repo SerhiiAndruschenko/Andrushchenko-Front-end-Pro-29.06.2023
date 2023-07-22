@@ -59,9 +59,8 @@ console.log(resulltMessage);
 
 /*5. Версія 2*/
 let currentNumber = 27;
-let power_2 = 0;
 
-for (;; power_2++) {
+for (let power_2 = 0;; power_2++) {
   let powerOfThree = 3**power_2;
   if (powerOfThree === currentNumber) {
     console.log(`${currentNumber} можна отримати шляхом зведення числа 3 у ступінь ${power_2}.`);
