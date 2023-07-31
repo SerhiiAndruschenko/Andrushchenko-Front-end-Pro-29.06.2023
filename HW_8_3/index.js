@@ -31,7 +31,7 @@ function pascalTriangleGenerator(rows){
       for(let i = 1; i < triangleRow.length; i++){
         newRow.push(triangleRow[i - 1] + triangleRow[i]);//перебираю елементи попереднього рядка і пушу в новий рядок значення, яке буде сумою двох верхніх значень
       }
-      newRow.push(1);//додаю в кінець рядка 1, бо так як і на початку рядка - тут одиниця завжди стала і її можна просто вставити
+      newRow.push(1);//додаю в кінець рядка 1, бо так як і на початку рядка - тут одиниця завжди стала і її можна просто вставити, щоб не проводити зайві розрахунки
       pascalTriangle.push(newRow);
       return pascalTriangle;
     }
