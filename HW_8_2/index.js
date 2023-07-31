@@ -89,7 +89,7 @@ console.log(resultString);
 
 //Варіант 2
 
-function removeCharacters(inputString, charactersToRemove) {
+function removeCharactersSecond(inputString, charactersToRemove) {
   let inputStringArray = inputString.split('');
   const filteredChars = inputStringArray.filter((char) => {
     return !charactersToRemove.includes(char);
@@ -101,3 +101,17 @@ const inputStringSecond = "hello world";
 const charactersToRemoveSecond = ['l', 'd'];
 const resultStringSecond = removeCharactersSecond(inputStringSecond, charactersToRemoveSecond);
 console.log(resultStringSecond);
+
+
+//Варіант 3
+function removeCharactersThird(inputString, charactersToRemove) {
+  for (const char of charactersToRemove) {
+    inputString = inputString.replaceAll(char, '');
+  }
+  return inputString;
+}
+
+const inputStringThird = "hello world";
+const charactersToRemoveThird = ['l', 'd'];
+const resultStringThird = removeCharactersThird(inputStringThird, charactersToRemoveThird);
+console.log(resultStringThird);
