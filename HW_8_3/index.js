@@ -15,6 +15,7 @@ function fibonacciSequencer(n){
 
 const number = 10;
 console.log(fibonacciSequencer(number));
+//тут виведеться в консоль масив зі значеннями послідовності [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
 
 //Трикутник паскаля
 
@@ -46,3 +47,10 @@ const triangleArray = pascalTriangleGenerator(rows);
 for(let i = 0; i <= triangleArray.length - 1; i++){
   console.log(triangleArray[i].join('   '));
 }
+/*на виході отримаємо
+1
+1   1
+1   2   1
+1   3   3   1
+1   4   6   4   1
+*/
