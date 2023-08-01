@@ -3,7 +3,6 @@ function sumCalculation() {
   return function (value) {
     return total += value;
   }
-  
 }
 
 const sum = sumCalculation();
