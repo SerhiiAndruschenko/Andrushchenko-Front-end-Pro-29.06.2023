@@ -35,6 +35,7 @@ class Car {
     Car number: ${this.carNumber}`);
 
     if(this.owner){
+      console.log('Owner:');
       this.owner.getInfo();
     } else {
       console.log('The car has no owner');
