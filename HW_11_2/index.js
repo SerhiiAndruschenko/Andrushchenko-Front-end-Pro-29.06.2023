@@ -17,7 +17,6 @@ class Car {
     this.model = model;
     this.year = year;
     this.carNumber = carNumber;
-    this.owner = null;
   }
 
   setOwner(owner){
