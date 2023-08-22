@@ -19,6 +19,12 @@ const data = [
 ];
 
 
+function clearElement(...elements) {
+  elements.forEach(element => {
+    element.innerHTML = '';
+  })
+}
+
 function displayCategories() {
   const categoryList = document.createElement('ul');
   const uniqueCategories =[...new Set(data.map(product => product.category))];
@@ -35,8 +41,7 @@ function displayCategories() {
 }
 
 function displayCategoryProducts(category) {
-  productsContainer.innerHTML = '';
-  productInfoContainer.innerHTML = '';
+  clearElement(productsContainer, productInfoContainer);
   const productsList = document.createElement('ul');
   const productsInCategory = data.filter(product => product.category === category);
 
@@ -68,8 +73,7 @@ function displayProductInfo(product) {
 
 function buyProduct(product) {
   alert(`You have purchased ${product.name}`);
-  productsContainer.innerHTML = '';
-  productInfoContainer.innerHTML = '';
+  clearElement(productsContainer, productInfoContainer);
 }
 
 displayCategories();
