@@ -5,12 +5,17 @@
 .shop{
   display: flex;
   max-width: 1110px;
-  margin: 100px auto;
+  margin: 50px auto;
   flex-wrap: wrap;
   gap:30px;
 }
 .shop>div{
   width: calc(50% - 15px);
+}
+
+#orders-wrap{
+  max-width: 1110px;
+  margin: 0 auto;
 }
 
 #categories {
@@ -74,7 +79,7 @@ ul{
   font-weight: 600;
 }
 
-.buy-button {
+button {
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -85,8 +90,59 @@ ul{
   
 }
 
-.buy-button:hover {
+button:hover {
   background-color: #0056b3;
+}
+
+span.delete {
+  display: block;
+  width: 15px;
+  height: 15px;
+  background-image: url(./img/delete.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor:pointer;
+}
+
+table{
+  width: 100%;
+  border-collapse: collapse;
+}
+tr.order-item td:first-child{
+  cursor: pointer;
+  color: #007bff;
+}
+
+tr.order-item td {
+  padding: 20px 0;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  text-align: left;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+div#orders-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap:30px;
+  align-items: flex-start;
+}
+
+#orders{
+  width: calc(50% - 15px);
+}
+
+#order-info{
+  width: calc(50% - 15px);
+}
+
+div#orders-head {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 @media screen and (max-width:767px){
