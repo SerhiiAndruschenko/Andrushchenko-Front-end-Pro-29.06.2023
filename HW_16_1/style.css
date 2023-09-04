@@ -13,13 +13,14 @@ img {
   display: block;
   position: absolute;
   right: 0;
-  top: 0;
+  top: -10px;
 }
 select#citySelect {
   width: 60%;
-  padding: 10px 5px;
+  padding: 0 5px;
   margin: 0 0 30px 0;
   display: block;
+  height: 30px;
 }
 p {
   display: flex;
