@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+select#citySelect {
+  padding: 10px 20px;
+  margin: 0 auto 20px auto;
+  display: block;
+}
+p {
+  display: flex;
+  margin: 10px auto;
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  font-size: 14px;
+}
+img {
+  margin: 0 auto;
+  display: block;
+}

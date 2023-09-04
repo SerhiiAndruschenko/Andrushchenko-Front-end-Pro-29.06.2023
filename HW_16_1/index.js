@@ -15,13 +15,12 @@ citySelect.addEventListener("change", function() {
     fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
-        temperature.textContent = data.main.temp;
-        pressure.textContent = data.main.pressure;
+        temperature.textContent = data.main.temp + ' °C';
+        pressure.textContent = data.main.pressure + ' hPa';
         description.textContent = data.weather[0].description;
-        humidity.textContent = data.main.humidity;
-        speed.textContent = data.wind.speed;
-        deg.textContent = data.wind.deg;
+        humidity.textContent = data.main.humidity + ' %';
+        speed.textContent = data.wind.speed + ' m/s';
+        deg.textContent = data.wind.deg + ' %';
         weatherIcon.src = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
       })
       .catch((error) => {
@@ -36,13 +35,12 @@ citySelect.addEventListener("change", function() {
   let selectedCity = this.value;
   if(selectedCity !== 'default'){
     weatherJSON(selectedCity).then(data => {
-      console.log(data);
-      temperature.textContent = data.main.temp;
-      pressure.textContent = data.main.pressure;
+      temperature.textContent = data.main.temp + ' °C';
+      pressure.textContent = data.main.pressure + ' hPa';
       description.textContent = data.weather[0].description;
-      humidity.textContent = data.main.humidity;
-      speed.textContent = data.wind.speed;
-      deg.textContent = data.wind.deg;
+      humidity.textContent = data.main.humidity + ' %';
+      speed.textContent = data.wind.speed + ' m/s';
+      deg.textContent = data.wind.deg + ' %';
       weatherIcon.src = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
     });
   }
