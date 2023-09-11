@@ -19,7 +19,6 @@ function generateList(array) {
   return html;
 }
 
-// Приклад використання функції:
 const array = [1, [1.1, 1.2, 1.3], 2, 3, [3.1, 3.2, 3.3], 4];
 const result = generateList(array);
 
