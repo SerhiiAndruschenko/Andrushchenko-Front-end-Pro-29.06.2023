@@ -1,0 +1,21 @@
+.sidebar_inner {
+  width: 25%;
+  background-color:#eee;
+  padding: 30px 20px;
+  border-radius: 5px;
+}
+.sidebar_inner ul {
+  padding:0;
+  list-style-type: none;
+}
+.sidebar_inner ul li a{
+  color: #000;
+  display: block;
+  text-decoration: none;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+.sidebar_inner ul li a:hover{
+  color: #61dafb;
+  border-color: #61dafb;
+}
