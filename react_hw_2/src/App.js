@@ -15,7 +15,7 @@ function App() {
   ];
 
   const [emojis, setEmojis] = useState(emojisArray);
-  const [maxVotes, setMaxVotes] = useState({ emojiSrc: '', votes: 0 });
+  const [topEmoji, setTopEmoji] = useState({ emojiSrc: '', votes: 0 });
   
   const handleVotes = function(index) {
     const updatedEmojis = [...emojis];
@@ -24,7 +24,7 @@ function App() {
   }
 
   const ShowResults = () => {
-    let maxVotesEmoji = maxVotes;
+    let maxVotesEmoji = topEmoji;
 
     for (const emoji of emojis) {
       if (emoji.votes > maxVotesEmoji.votes) {
@@ -32,7 +32,7 @@ function App() {
       }
     }
 
-    setMaxVotes(maxVotesEmoji);
+    setTopEmoji(maxVotesEmoji);
   }
 
   return (
@@ -45,8 +45,8 @@ function App() {
       
       <div className='result'>
         <button onClick={ShowResults}>Show Results</button>
-        {maxVotes.votes > 0 && (
-          <div>The winner is: <br /><img src={maxVotes.emojiSrc} alt='Winner'/> with {maxVotes.votes} votes</div>
+        {topEmoji.votes > 0 && (
+          <div>The winner is: <br /><img src={topEmoji.emojiSrc} alt='Winner'/> with {topEmoji.votes} votes</div>
         )}
       </div>
     </>
