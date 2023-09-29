@@ -17,7 +17,7 @@ function App() {
   const [emojis, setEmojis] = useState(emojisArray);
   const [topEmoji, setTopEmoji] = useState({ emojiSrc: '', votes: 0 });
   
-  const handleVotes = function(index) {
+  const handleVotes = (index) => {
     const updatedEmojis = [...emojis];
     updatedEmojis[index].votes += 1;
     setEmojis(updatedEmojis);
