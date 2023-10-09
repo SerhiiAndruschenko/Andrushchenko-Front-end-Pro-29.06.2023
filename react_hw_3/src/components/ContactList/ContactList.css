@@ -1,0 +1,23 @@
+table {
+  margin: 30px auto 30px auto;
+  width: 800px;
+}
+
+th{
+  text-align: left;
+  width: 30%;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+th:last-child{
+  width: 10%;
+  text-align: right;
+}
+
+td{
+  padding: 5px 0;
+  border-bottom: 1px solid #ddd;
+}
+td:last-child{
+  text-align: right;
+}
