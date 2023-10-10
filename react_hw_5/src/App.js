@@ -26,7 +26,7 @@ function App() {
       phone: ''
     }, 
     validationSchema: validationSchema,
-    onSubmit: (values) => {
+    onSubmit: () => {
       formik.resetForm();
       setMessage('Your message was sent successfully!')
     }
