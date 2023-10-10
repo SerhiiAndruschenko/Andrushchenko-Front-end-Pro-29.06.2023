@@ -1,0 +1,10 @@
+.App {
+  max-width: 500px;
+  margin: 100px auto;
+}
+form {
+  margin-bottom: 50px;
+}
+form>div{
+  margin-bottom: 30px;
+}
