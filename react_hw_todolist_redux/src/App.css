@@ -1,0 +1,26 @@
+body {
+  background:#f3f6f9;
+}
+
+.App {
+  max-width: 540px;
+  margin: 50px auto;
+}
+
+form { 
+  display: flex;
+  justify-content: space-between;
+  gap:30px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.form input { 
+  background:#fff;
+}
+form>div {
+  flex-grow: 1;
+}
+li{
+  border-bottom: 5px solid #f3f6f9;
+}
