@@ -13,7 +13,7 @@ function App() {
           <Route path="/">
             <Route index element={<UserList />} />
             <Route path="albums/:userId" element={<Album />} />
-            <Route path="photos/:albumId" element={<Photos />} />
+            <Route path="albums/:userId/photos/:albumId" element={<Photos />} />
           </ Route>
         </Routes>
       </BrowserRouter>

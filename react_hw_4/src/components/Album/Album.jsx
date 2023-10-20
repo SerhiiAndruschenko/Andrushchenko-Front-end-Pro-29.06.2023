@@ -18,7 +18,7 @@ const Album = () => {
         {albums.map(album => (
           <div className='card' key={album.id}>
             {album.title}
-            <Link to={`/photos/${album.id}`}>Photos</Link>
+            <Link to={`/albums/${userId}/photos/${album.id}`}>Photos</Link>
           </div>
         ))}
       </div>

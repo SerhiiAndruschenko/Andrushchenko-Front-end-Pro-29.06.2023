@@ -22,6 +22,12 @@ const TasksSlice = createSlice({
       const indexToUpdate = updatedTasks.findIndex(task => task.id === action.payload);
       updatedTasks[indexToUpdate].completed = !updatedTasks[indexToUpdate].completed;
       state.tasks = updatedTasks;
+    },
+    editTask: (state, action) => {
+      const updatedTasks = [...state.tasks];
+      const indexToUpdate = updatedTasks.findIndex(task => task.id === action.payload.id);
+      updatedTasks[indexToUpdate].text = action.payload.text;
+      state.tasks = updatedTasks;
     }
   }
 });
