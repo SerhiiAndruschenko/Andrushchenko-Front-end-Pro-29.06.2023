@@ -28,19 +28,11 @@ export const toggleTask = createAsyncThunk('tasks/toggleTask', (taskId) =>
 );
 
 export const editTask = createAsyncThunk('tasks/editTask', ({ id, text }) =>
-  axios.put(`${apiUrlTasks}/${id}`, { text }, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }).then(() => ({ id, text }))
+  axios.put(`${apiUrlTasks}/${id}`, { text }).then(() => ({ id, text }))
 );
 
 export const setUserForTask = createAsyncThunk('tasks/setUserForTask', ({ taskId, user }) =>
-  axios.put(`${apiUrlTasks}/${taskId}`, { assignedUser: user }, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }).then(() => ({ taskId, user }))
+  axios.put(`${apiUrlTasks}/${taskId}`, { assignedUser: user }).then(() => ({ taskId, user }))
 );
 
 const initialState = {
