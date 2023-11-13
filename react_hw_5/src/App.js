@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import SendIcon from '@mui/icons-material/Send';
 import { Alert, TextField, Button } from '@mui/material';
 
+
 const validationSchema = Yup.object().shape({
   name: Yup.string()
     .required('This field is required'),

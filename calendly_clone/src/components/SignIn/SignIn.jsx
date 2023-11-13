@@ -1,0 +1,110 @@
+import { useState } from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import Paper from '@mui/material/Paper';
+import { Alert, TextField, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+
+const validationSchema = Yup.object().shape({
+  
+  email: Yup.string()
+    .email('Email is not valid')
+    .required('This field is required'),
+  password: Yup.string()
+    .required('This field is required'),
+});
+
+const SignIn = ({ setVisibility }) => {
+  const navigate = useNavigate();
+  const [alertMessage, setAlertMessage] = useState('');
+
+  const formik = useFormik({
+    initialValues:{
+      email: '',
+      password: ''
+    }, 
+    validationSchema: validationSchema,
+    onSubmit: () => {
+
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      const { email, password } = formik.values;
+      const foundUser = users.find(user => user.email === email && user.password === password);
+
+      if (foundUser) {
+        formik.resetForm();
+        const userId = foundUser.id;
+        console.log(userId);
+        navigate(`account/${userId}`);
+      } else {
+        setAlertMessage('User not found. Please sign up.')
+      }
+    }
+  });
+
+  
+
+  return(
+    <>
+      
+      <Paper sx={{ maxWidth: 350, marginLeft: 'auto', marginRight: 'auto', padding: '20px'}} elevation={3}>
+        <form onSubmit={formik.handleSubmit}>
+          <h2>Sign In</h2>
+
+          <div>
+            <TextField
+              id="email"
+              name="email"
+              label="Email"
+              variant="outlined"
+              fullWidth
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              helperText={formik.touched.email && formik.errors.email}
+            />
+          </div>
+          <div>
+            <TextField
+              id="password"
+              name="password"
+              label="Password"
+              variant="outlined"
+              fullWidth
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+              error={formik.touched.password && Boolean(formik.errors.password)}
+              helperText={formik.touched.password && formik.errors.password}
+            />
+          </div>
+
+         { alertMessage && (
+            <>
+              <Alert severity="error">{alertMessage}</Alert>
+            </>
+          )}
+
+          <div>
+            <Button 
+              fullWidth
+              variant="contained" 
+              color="primary" 
+              type="submit"
+              size="large"
+            >
+              Sign In
+            </Button>
+          </div>
+
+          <div>
+            <Button variant="text" onClick={setVisibility}>Sign Up</Button>
+          </div>
+
+        </form>
+      </Paper>
+    </>
+  )
+}
+
+export default SignIn;
