@@ -1,21 +1,38 @@
-import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { UserActions } from '../../store/UserSlice';
+import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const Account = () => {
-  const [user, setUser] = useState([]);
-  let { userId } = useParams();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const userIdNumber = parseInt(userId);
-    const currentUser = users.find(user => user.id === userIdNumber);
-    setUser(currentUser);
-    console.log(currentUser);
-  }, [userId]);
+    dispatch(UserActions.getUser());
+  }, []);
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    dispatch(UserActions.logOut());
+    navigate('/login');
+  }
 
   return(
     <>
-      <h2>Hello, {user.name}</h2>
+      <div class="user-inner">
+        <h2>Hello, {user.name}</h2>
+        <Button 
+          variant="contained" 
+          color="primary" 
+          type="submit"
+          size="large"
+          onClick={handleClick}
+        >
+          Log out
+        </Button>
+      </div>
     </>
   )
 }

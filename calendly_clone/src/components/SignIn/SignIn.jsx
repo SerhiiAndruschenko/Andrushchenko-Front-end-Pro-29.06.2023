@@ -4,6 +4,9 @@ import * as Yup from 'yup';
 import Paper from '@mui/material/Paper';
 import { Alert, TextField, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { LOCAL_STORAGE_NAME } from '../../common/constants';
+import { useDispatch } from 'react-redux';
+import { UserActions } from '../../store/UserSlice';
 
 const validationSchema = Yup.object().shape({
   
@@ -15,6 +18,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignIn = ({ setVisibility }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [alertMessage, setAlertMessage] = useState('');
 
@@ -26,15 +30,14 @@ const SignIn = ({ setVisibility }) => {
     validationSchema: validationSchema,
     onSubmit: () => {
 
-      const users = JSON.parse(localStorage.getItem('users')) || [];
+      const users = JSON.parse(localStorage.getItem(LOCAL_STORAGE_NAME.USERS));
       const { email, password } = formik.values;
       const foundUser = users.find(user => user.email === email && user.password === password);
 
       if (foundUser) {
         formik.resetForm();
-        const userId = foundUser.id;
-        console.log(userId);
-        navigate(`account/${userId}`);
+        dispatch(UserActions.logIn({ ...foundUser }));
+        navigate('/');
       } else {
         setAlertMessage('User not found. Please sign up.')
       }

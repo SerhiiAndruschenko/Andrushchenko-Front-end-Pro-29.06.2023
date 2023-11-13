@@ -3,6 +3,9 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Paper from '@mui/material/Paper';
 import { Alert, TextField, Button } from '@mui/material';
+import { useDispatch, } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { LOCAL_STORAGE_NAME } from '../../common/constants';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -15,6 +18,8 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignUp = ( { setVisibility } ) => {
+  const navigate = useNavigate();
+
   const [alertMessage, setAlertMessage] = useState('');
 
   const formik = useFormik({
@@ -26,10 +31,9 @@ const SignUp = ( { setVisibility } ) => {
     validationSchema: validationSchema,
     onSubmit: () => {
       const { name, email, password } = formik.values;
-      const users = JSON.parse(localStorage.getItem('users')) || [];
+      const users = JSON.parse(localStorage.getItem(LOCAL_STORAGE_NAME.USERS)) || [];
 
       const newUser = {
-        id: users.length + 1,
         name,
         email,
         password,
@@ -39,8 +43,9 @@ const SignUp = ( { setVisibility } ) => {
 
       if (!foundUser) {
         users.push(newUser);
-        localStorage.setItem('users', JSON.stringify(users));
+        localStorage.setItem(LOCAL_STORAGE_NAME.USERS, JSON.stringify(users));
         formik.resetForm();
+        navigate('/');
       } else {
         setAlertMessage('User already exist. Please sign in.')
       }
