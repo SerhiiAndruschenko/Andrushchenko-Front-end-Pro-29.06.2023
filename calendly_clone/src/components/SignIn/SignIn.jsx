@@ -6,6 +6,7 @@ import { Alert, TextField, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { UserActions } from '../../store/UserSlice';
+import { LOCAL_STORAGE_NAME } from '../../common/constants';
 
 const validationSchema = Yup.object().shape({
   
@@ -43,8 +44,10 @@ const SignIn = ({ setVisibility }) => {
         formik.resetForm();
         dispatch(UserActions.logIn({ ...foundUser }));
         navigate('/');
+        localStorage.removeItem(LOCAL_STORAGE_NAME.TEMP_EMAIL);
       } else {
-        setAlertMessage('User not found. Please sign up.')
+        setAlertMessage('User not found. Please sign up.');
+        localStorage.setItem(LOCAL_STORAGE_NAME.TEMP_EMAIL, email);
       }
     }
   });

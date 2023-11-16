@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper';
 import { Alert, TextField, Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { UserActions } from '../../store/UserSlice';
+import { LOCAL_STORAGE_NAME } from '../../common/constants';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -25,6 +26,7 @@ const SignUp = ( { setVisibility } ) => {
   const dispatch = useDispatch();
   const [alertMessage, setAlertMessage] = useState('');
   const users = useSelector((state) => state.user.users);;
+  const tempEmail = localStorage.getItem(LOCAL_STORAGE_NAME.TEMP_EMAIL);
 
   useEffect(() => {
     dispatch(UserActions.getUserList());
@@ -33,7 +35,7 @@ const SignUp = ( { setVisibility } ) => {
   const formik = useFormik({
     initialValues:{
       name: '',
-      email: '',
+      email: tempEmail || '',
       password: '',
     }, 
     validationSchema: validationSchema,
@@ -52,6 +54,7 @@ const SignUp = ( { setVisibility } ) => {
         dispatch(UserActions.addUser(newUser));
         formik.resetForm();
         dispatch(UserActions.logIn({ ...newUser }));
+        localStorage.removeItem(LOCAL_STORAGE_NAME.TEMP_EMAIL);
       } else {
         setAlertMessage('User already exist. Please sign in.')
       }

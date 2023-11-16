@@ -26,8 +26,10 @@ const UserSlice = createSlice({
     },
     getUser: (state, action) => {
       const storedToken = localStorage.getItem(LOCAL_STORAGE_NAME.TOKEN);
-      const decodedToken = atob(storedToken);
-      state.user = JSON.parse(decodedToken);
+      if(storedToken) {
+        const decodedToken = atob(storedToken);
+        state.user = JSON.parse(decodedToken);
+      }
     },
     getUserList: (state, action) => {
       const storedUsers = localStorage.getItem(LOCAL_STORAGE_NAME.USERS);
