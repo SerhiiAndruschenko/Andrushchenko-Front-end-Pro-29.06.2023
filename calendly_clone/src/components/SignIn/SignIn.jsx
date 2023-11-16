@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Paper from '@mui/material/Paper';
 import { Alert, TextField, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { LOCAL_STORAGE_NAME } from '../../common/constants';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { UserActions } from '../../store/UserSlice';
 
 const validationSchema = Yup.object().shape({
@@ -21,6 +20,11 @@ const SignIn = ({ setVisibility }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [alertMessage, setAlertMessage] = useState('');
+  const users = useSelector((state) => state.user.users);;
+
+  useEffect(() => {
+    dispatch(UserActions.getUserList());
+  }, []);
 
   const formik = useFormik({
     initialValues:{
@@ -30,7 +34,8 @@ const SignIn = ({ setVisibility }) => {
     validationSchema: validationSchema,
     onSubmit: () => {
 
-      const users = JSON.parse(localStorage.getItem(LOCAL_STORAGE_NAME.USERS));
+      
+
       const { email, password } = formik.values;
       const foundUser = users.find(user => user.email === email && user.password === password);
 

@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { LOCAL_STORAGE_NAME } from '../common/constants';
 
 export const initialState = {
+  users: [],
   user: {},
   token: null
 }
@@ -24,8 +25,18 @@ const UserSlice = createSlice({
       state.token = localStorage.getItem(LOCAL_STORAGE_NAME.TOKEN);
     },
     getUser: (state, action) => {
-      let decodedToken = atob(localStorage.getItem(LOCAL_STORAGE_NAME.TOKEN));
+      const storedToken = localStorage.getItem(LOCAL_STORAGE_NAME.TOKEN);
+      const decodedToken = atob(storedToken);
       state.user = JSON.parse(decodedToken);
+    },
+    getUserList: (state, action) => {
+      const storedUsers = localStorage.getItem(LOCAL_STORAGE_NAME.USERS);
+      state.users = storedUsers ? JSON.parse(storedUsers) : [];
+    },
+    addUser: (state, action) => {
+      const newUser = action.payload;
+      state.users = [...state.users, newUser];
+      localStorage.setItem(LOCAL_STORAGE_NAME.USERS, JSON.stringify(state.users));
     }
   }
 });

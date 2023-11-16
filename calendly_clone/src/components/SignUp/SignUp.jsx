@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Paper from '@mui/material/Paper';
 import { Alert, TextField, Button } from '@mui/material';
-import { useDispatch, } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { LOCAL_STORAGE_NAME } from '../../common/constants';
+import { useDispatch, useSelector } from 'react-redux';
+import { UserActions } from '../../store/UserSlice';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -14,13 +13,22 @@ const validationSchema = Yup.object().shape({
     .email('Email is not valid')
     .required('This field is required'),
   password: Yup.string()
-    .required('This field is required'),
+    .required('This field is required')
+    .min(8, 'Password must be at least 8 characters')
+    .matches(
+      /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9])(?=.*[a-z]).{8,}$/,
+      'Password must contain at least 1 uppercase letter, 1 special character, and 1 number'
+    ),
 });
 
 const SignUp = ( { setVisibility } ) => {
-  const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const [alertMessage, setAlertMessage] = useState('');
+  const users = useSelector((state) => state.user.users);;
+
+  useEffect(() => {
+    dispatch(UserActions.getUserList());
+  }, []);
 
   const formik = useFormik({
     initialValues:{
@@ -31,7 +39,6 @@ const SignUp = ( { setVisibility } ) => {
     validationSchema: validationSchema,
     onSubmit: () => {
       const { name, email, password } = formik.values;
-      const users = JSON.parse(localStorage.getItem(LOCAL_STORAGE_NAME.USERS)) || [];
 
       const newUser = {
         name,
@@ -42,10 +49,9 @@ const SignUp = ( { setVisibility } ) => {
       const foundUser = users.find(user => user.email === email);
 
       if (!foundUser) {
-        users.push(newUser);
-        localStorage.setItem(LOCAL_STORAGE_NAME.USERS, JSON.stringify(users));
+        dispatch(UserActions.addUser(newUser));
         formik.resetForm();
-        navigate('/');
+        dispatch(UserActions.logIn({ ...newUser }));
       } else {
         setAlertMessage('User already exist. Please sign in.')
       }

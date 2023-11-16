@@ -2,7 +2,6 @@ import { useState } from "react";
 import SignIn from "../SignIn/SignIn";
 import SignUp from "../SignUp/SignUp";
 import { useEffect } from 'react';
-import { LOCAL_STORAGE_NAME } from "../../common/constants";
 import { useNavigate } from "react-router-dom";
 import { UserActions } from '../../store/UserSlice';
 import { useDispatch, useSelector } from 'react-redux';

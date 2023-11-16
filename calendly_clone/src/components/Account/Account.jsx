@@ -13,7 +13,7 @@ const Account = () => {
     dispatch(UserActions.getUser());
   }, []);
 
-  const handleClick = (event) => {
+  const handleLogOut = (event) => {
     event.preventDefault();
     dispatch(UserActions.logOut());
     navigate('/login');
@@ -28,7 +28,7 @@ const Account = () => {
           color="primary" 
           type="submit"
           size="large"
-          onClick={handleClick}
+          onClick={handleLogOut}
         >
           Log out
         </Button>
